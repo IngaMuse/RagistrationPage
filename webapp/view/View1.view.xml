@@ -56,36 +56,40 @@
 							change=".onNameChange"
 						/>
 						<VBox>
-						<HBox alignItems="Center"> 
-						<Text text="*" class="required-star" />
-						<Label
-							text="City"
-							labelFor="CityId"
-						/>
-						</HBox> 
-						<Select
-							selectedKey="{/selectedCity}"
-							class="required-star"
-							width="200px"
-							required="true"
-							items="{/CityCollection}"
-						>
-							<core:Item
-								key="{CityId}"
-								text="{City}"
-							/>
-						</Select>
+							<HBox alignItems="Center">
+								<Text
+									text="*"
+									class="required-star"
+								/>
+								<Label
+									text="City"
+									labelFor="CityId"
+								/>
+							</HBox>
+							<Select
+								selectedKey="{/selectedCity}"
+								class="required-star"
+								width="200px"
+								required="true"
+								items="{/CityCollection}"
+							>
+								<core:Item
+									key="{CityId}"
+									text="{City}"
+								/>
+							</Select>
 						</VBox>
-						<Label text="Phone number"
-						labelFor="phoneInput" />
-        		<Input
-        		id="phoneInput"
-        		placeholder="+375 (XX) XXX-XX-XX"
-						class="required-star"
-        		valueLiveUpdate="true"
-						required="true"
-						valueStateText="Phone number must not be empty."
-        		change="onPhoneNumberChange" />
+						<Label
+							text="Phone number"
+							labelFor="phoneInput"
+						/>
+						<Input
+							id="phoneInput"
+							placeholder="+375XX XXX XX XX"
+							class="required-star"
+							valueLiveUpdate="true"
+							required="true"
+						/>
 						<Label
 							text="E-mail"
 							labelFor="emailInput"
@@ -96,7 +100,7 @@
 							type="Email"
 							placeholder="Enter email"
 							required="true"
-							valueStateText="E-mail must be a valid email address."
+							valueStateText="E-mail must not be empty. E-mail must be a valid email address."
 							value="{
 								path: '/email',
 								type: '.customEMailType',
@@ -106,10 +110,37 @@
 								}
 							}"
 						/>
+						<Label text="Password" labelFor="passwordInput" />
+    <Input
+        id="passwordInput"
+        type="Password"
+        placeholder="Enter password"
+				tooltip="The password must contain: - from 8 to 14 characters, - at least one capital letter, - one lowercase letter, - one number and - one special character"
+				valueStateText="Password must not be empty."
+				class="required-star"
+				required="true"
+        valueLiveUpdate="true"
+    />
+    <Label text="Confirm Password" labelFor="confirmPasswordInput" />
+    <Input
+        id="confirmPasswordInput"
+        type="Password"
+        placeholder="Confirm password"
+				class="required-star"
+				required="true"
+        valueLiveUpdate="true"
+   />
+				<HBox>
 						<Button
-							text="Submit"
+						class="sapUiMediumMarginEnd"
+							text="Register"
 							press=".onSubmit"
 						/>
+						<Button
+							text="Cancel"
+							press=".onCancel"
+						/>
+						</HBox>
 					</l:VerticalLayout>
 				</content>
 			</Page>

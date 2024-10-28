@@ -46,24 +46,69 @@ sap.ui.define([
 				oInput.setValueState(sValueState);
 				return bValidationError;
 			},
-
-			onNameChange: function(oEvent) {
-				var oInput = oEvent.getSource();
-				this._validateInput(oInput);
-		},
 				
-		onPhoneNumberChange: function(oEvent) {
-			var inputValue = oEvent.getParameter("value");
-			var regex = /^\+375(25|29|33|44|17)\s?\d{3}\s?\d{2}\s?\d{2}$/;
-			var inputField = this.byId("phoneInput");
-			
+		onPhoneNumberChange: function() {
+			const inputValue = this.byId("phoneInput").getValue();
+			const regex = /^\+375(25|29|33|44|17)\s?\d{3}\s?\d{2}\s?\d{2}$/;
+			const inputField = this.byId("phoneInput");
+			let textErrorPassword = "";
+			if (inputValue === "") {
+				textErrorPassword = "Phone number must not be empty."
+			}
 			if (!regex.test(inputValue) && inputValue !== "") {
+				textErrorPassword = "Enter phone number in correct format for Belarus"
+			}
+				if (textErrorPassword !== "") {
 					inputField.setValueState(sap.ui.core.ValueState.Error);
-					inputField.setValueStateText("Enter phone number in correct format for Belarus");
+					inputField.setValueStateText(textErrorPassword);
+					return false;
 			} else {
 					inputField.setValueState(sap.ui.core.ValueState.None);
+					return true;
 			}
-	},
+		},
+		
+		onPasswordChange: function () {
+			const password = this.byId("passwordInput").getValue();
+			const inputField = this.byId("passwordInput");
+			let textErrorPassword = "";
+			const specialChars = /[.,:;?!*+%\-<>$@${}\/\\_$#]/;
+			if (!specialChars.test(password)) {
+				textErrorPassword = "The password must contain at least one special character(.,:;?!*+%-<>$@${}/\_$#)";
+			}
+			if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
+				textErrorPassword = "The password must contain at least one uppercase and one lowercase letter";
+			}
+			if (!/[0-9]/.test(password)) {
+				textErrorPassword = "The password must contain at least one number";
+			}
+			if (password.length < 8 || password.length > 64) {
+				textErrorPassword =
+					"Password length must be from 8 to 64 characters";
+			}
+			if (textErrorPassword !== "") {
+			  inputField.setValueState(sap.ui.core.ValueState.Error);
+				inputField.setValueStateText(textErrorPassword);
+				return false;
+			} else {
+				inputField.setValueState(sap.ui.core.ValueState.None);
+				return true;
+			}
+		},
+	
+	    onConfirmPasswordChange: function() {
+			const password = this.byId("passwordInput").getValue();
+			const confirmPassword = this.byId("confirmPasswordInput").getValue();
+			const confirmPasswordField = this.byId("confirmPasswordInput");
+			if (password !== confirmPassword) {
+					confirmPasswordField.setValueState(sap.ui.core.ValueState.Error);
+				confirmPasswordField.setValueStateText("Passwords don't match.");
+				return false;
+			} else {
+				confirmPasswordField.setValueState(sap.ui.core.ValueState.None);
+				return true;
+			}
+	    },
 
 			onSubmit: function () {
 				var oView = this.getView(),
@@ -71,18 +116,26 @@ sap.ui.define([
 						oView.byId("nameInput"),
 						oView.byId("lastNameInput"),
 						oView.byId("emailInput"),
-						oView.byId("phoneInput")
 					],
 					bValidationError = false;
 				aInputs.forEach(function (oInput) {
 					bValidationError = this._validateInput(oInput) || bValidationError;
 				}, this);
+				const bIsPhoneNumberValid = this.onPhoneNumberChange();
+				const bIsPasswordValid = this.onPasswordChange();
+				const bIsConfirmPasswordValid =  this.onConfirmPasswordChange();
+				if (!bIsPhoneNumberValid && !bIsPasswordValid && !bIsConfirmPasswordValid) {
+					bValidationError = true;
+				}
 				if (!bValidationError) {
 					MessageToast.show("The input is validated. Your form has been submitted.");
 				} else {
 					MessageBox.alert("A validation error has occurred. Complete your input first.");
 				}
-			},
+		},
+			
+		onCancel: function () {
+		},
 
 			customEMailType: SimpleType.extend("email", {
 				formatValue: function (oValue) {
