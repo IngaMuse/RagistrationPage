@@ -1,9 +1,112 @@
-<mvc:View controllerName="courseRegistrationPage.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true" xmlns="sap.m">
+<mvc:View
+	controllerName="courseRegistrationPage.controller.View1"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+>
 	<App>
 		<pages>
 			<Page title="{i18n>title}">
-				<content></content>
+				<content>
+					<l:VerticalLayout
+						class="sapUiContentPadding"
+						width="100%"
+					>
+						<Label
+							text="Name"
+							labelFor="nameInput"
+						/>
+						<Input
+							id="nameInput"
+							class="required-star"
+							placeholder="Enter name"
+							required="true"
+							valueStateText="Name must not be empty. Maximum 64 characters."
+							value="{
+								path: '/name',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1,
+									maxLength: 64
+								}
+							}"
+							change=".onNameChange"
+						/>
+						<Label
+							text="Last Name"
+							labelFor="lastNameInput"
+						/>
+						<Input
+							id="lastNameInput"
+							class="required-star"
+							placeholder="Enter last name"
+							required="true"
+							valueStateText="Last name must not be empty. Maximum 64 characters."
+							value="{
+								path: '/lastName',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1,
+									maxLength: 64
+								}
+							}"
+							change=".onNameChange"
+						/>
+						<VBox>
+						<HBox alignItems="Center"> 
+						<Text text="*" class="required-star" />
+						<Label
+							text="City"
+							labelFor="CityID"
+						/>
+						</HBox> 
+						<Select
+							selectedKey="{/selectedCity}"
+							class="required-star"
+							width="200px"
+							required="true"
+							items="{/CityCollection}"
+						>
+							<core:Item
+								key="{CityId}"
+								text="{City}"
+							/>
+						</Select>
+						</VBox>
+
+
+
+
+
+						<Label
+							text="E-mail"
+							labelFor="emailInput"
+						/>
+						<Input
+							id="emailInput"
+							class="required-star"
+							type="Email"
+							placeholder="Enter email"
+							required="true"
+							valueStateText="E-mail must be a valid email address."
+							value="{
+								path: '/email',
+								type: '.customEMailType',
+								constraints: {
+									minLength: 1,
+									maxLength: 256
+								}
+							}"
+						/>
+						<Button
+							text="Submit"
+							press=".onSubmit"
+						/>
+					</l:VerticalLayout>
+				</content>
 			</Page>
 		</pages>
 	</App>
