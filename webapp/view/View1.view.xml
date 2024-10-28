@@ -60,7 +60,7 @@
 						<Text text="*" class="required-star" />
 						<Label
 							text="City"
-							labelFor="CityID"
+							labelFor="CityId"
 						/>
 						</HBox> 
 						<Select
@@ -76,11 +76,16 @@
 							/>
 						</Select>
 						</VBox>
-
-
-
-
-
+						<Label text="Phone number"
+						labelFor="phoneInput" />
+        		<Input
+        		id="phoneInput"
+        		placeholder="+375 (XX) XXX-XX-XX"
+						class="required-star"
+        		valueLiveUpdate="true"
+						required="true"
+						valueStateText="Phone number must not be empty."
+        		change="onPhoneNumberChange" />
 						<Label
 							text="E-mail"
 							labelFor="emailInput"

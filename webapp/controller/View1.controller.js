@@ -29,7 +29,6 @@ sap.ui.define([
 				],
 				selectedCity: "1"
 			};
-
 		  const oModel = new JSONModel(oCityData);
 		  oView.setModel(oModel);
 		},
@@ -51,20 +50,33 @@ sap.ui.define([
 			onNameChange: function(oEvent) {
 				var oInput = oEvent.getSource();
 				this._validateInput(oInput);
-			},
+		},
+				
+		onPhoneNumberChange: function(oEvent) {
+			var inputValue = oEvent.getParameter("value");
+			var regex = /^\+375(25|29|33|44|17)\s?\d{3}\s?\d{2}\s?\d{2}$/;
+			var inputField = this.byId("phoneInput");
+			
+			if (!regex.test(inputValue) && inputValue !== "") {
+					inputField.setValueState(sap.ui.core.ValueState.Error);
+					inputField.setValueStateText("Enter phone number in correct format for Belarus");
+			} else {
+					inputField.setValueState(sap.ui.core.ValueState.None);
+			}
+	},
 
 			onSubmit: function () {
 				var oView = this.getView(),
 					aInputs = [
 						oView.byId("nameInput"),
 						oView.byId("lastNameInput"),
-						oView.byId("emailInput")
+						oView.byId("emailInput"),
+						oView.byId("phoneInput")
 					],
 					bValidationError = false;
 				aInputs.forEach(function (oInput) {
 					bValidationError = this._validateInput(oInput) || bValidationError;
 				}, this);
-
 				if (!bValidationError) {
 					MessageToast.show("The input is validated. Your form has been submitted.");
 				} else {
@@ -76,11 +88,9 @@ sap.ui.define([
 				formatValue: function (oValue) {
 					return oValue;
 				},
-
 				parseValue: function (oValue) {
 					return oValue;
 				},
-
 				validateValue: function (oValue) {
 					const rexMail = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
 					if (!oValue.match(rexMail)) {
