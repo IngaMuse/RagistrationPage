@@ -9,11 +9,10 @@
 >
 	<App>
 		<pages>
-			<Page title="{i18n>title}"
-			>
+			<Page title="{i18n>title}">
 				<content>
 					<l:VerticalLayout
-					  id = "oVerticalContent"
+						id="oVerticalContent"
 						class="sapUiContentPadding"
 						width="100%"
 					>
@@ -112,59 +111,74 @@
 								}
 							}"
 						/>
-						<Label text="Password" labelFor="passwordInput" />
-    <Input
-        id="passwordInput"
-        type="Password"
-        placeholder="Enter password"
-				tooltip="The password must contain: - from 8 to 14 characters, - at least one capital letter, - one lowercase letter, - one number and - one special character"
-				class="required-star"
-				required="true"
-        valueLiveUpdate="true"
-    />
-    <Label text="Confirm Password" labelFor="confirmPasswordInput" />
-    <Input
-        id="confirmPasswordInput"
-        type="Password"
-        placeholder="Confirm password"
-				class="required-star"
-				required="true"
-        valueLiveUpdate="true"
-   />
-	 <VBox>
-    <HBox alignItems="Center">
-	 <CheckBox id="consentCheckbox"
-	 selected="false" 
-	 select=".onCheckBoxSelect"/>
-	  <Text text="I agree with"/>
-            <Link
-						class="myLink"
-						href="./pdf/UsersAgreement.pdf"
-						target="_blank"
-						text="the terms of the user agreement"
-						tooltip="Click here to read the user agreement"/> 
-    <Text text="and"/>
-						<Link 
-						class="myLink"
-						href="./pdf/PlatformRules.pdf" 
-						text="platform rule"
-						target="_blank"
-						tooltip="Click here to read the platform rule"/>
-		</HBox>
-    </VBox>
-				<l:HorizontalLayout>
-					<Button
-							text="Register"
-							type="Emphasized"
-							enabled="{modelReg>/submitEnabled}"
-							press=".onSubmit"
+						<Label
+							text="Password"
+							labelFor="passwordInput"
 						/>
-						<Button
-							text="Cancel"
-							type="Transparent"
-							press=".onCancel"
+						<Input
+							id="passwordInput"
+							type="Password"
+							placeholder="Enter password"
+							tooltip="The password must contain: - from 8 to 14 characters, - at least one capital letter, - one lowercase letter, - one number and - one special character"
+							class="required-star"
+							required="true"
+							valueLiveUpdate="true"
 						/>
-				</l:HorizontalLayout>					
+						<Label
+							text="Confirm Password"
+							labelFor="confirmPasswordInput"
+						/>
+						<Input
+							id="confirmPasswordInput"
+							type="Password"
+							placeholder="Confirm password"
+							class="required-star"
+							required="true"
+							valueLiveUpdate="true"
+						/>
+						<VBox>
+							<HBox alignItems="Center">
+								<CheckBox
+									id="consentCheckbox"
+									selected="false"
+									select=".onCheckBoxSelect"
+								/>
+								<Text text="I agree with" />
+								<Link
+									class="myLink"
+									href="./pdf/UsersAgreement.pdf"
+									target="_blank"
+									text="the terms of the user agreement"
+									tooltip="Click here to read the user agreement"
+								/>
+								<Text text="and" />
+								<Link
+									class="myLink"
+									href="./pdf/PlatformRules.pdf"
+									text="platform rule"
+									target="_blank"
+									tooltip="Click here to read the platform rule"
+								/>
+							</HBox>
+						</VBox>
+						<Label
+							text="Promocode"
+							labelFor="promocodeInput"
+						/>
+						<Input id="promocodeInput" />
+						<l:HorizontalLayout>
+							<Button
+								text="Register"
+								type="Emphasized"
+								enabled="{modelReg>/submitEnabled}"
+								press=".onSubmit"
+							/>
+							<Button
+								text="Cancel"
+								type="Transparent"
+								press=".onCancel"
+							/>
+						</l:HorizontalLayout>
 					</l:VerticalLayout>
 				</content>
 			</Page>
