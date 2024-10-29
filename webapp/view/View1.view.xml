@@ -9,9 +9,11 @@
 >
 	<App>
 		<pages>
-			<Page title="{i18n>title}">
+			<Page title="{i18n>title}"
+			>
 				<content>
 					<l:VerticalLayout
+					  id = "oVerticalContent"
 						class="sapUiContentPadding"
 						width="100%"
 					>
@@ -132,7 +134,8 @@
 	 <VBox>
     <HBox alignItems="Center">
 	 <CheckBox id="consentCheckbox"
-	 selected="false" />
+	 selected="false" 
+	 select=".onCheckBoxSelect"/>
 	  <Text text="I agree with"/>
             <Link
 						class="myLink"
@@ -149,11 +152,11 @@
 						tooltip="Click here to read the platform rule"/>
 		</HBox>
     </VBox>
-				<HBox>
-						<Button
-						  class="sapUiMediumMarginEnd"
+				<l:HorizontalLayout>
+					<Button
 							text="Register"
 							type="Emphasized"
+							enabled="{modelReg>/submitEnabled}"
 							press=".onSubmit"
 						/>
 						<Button
@@ -161,7 +164,7 @@
 							type="Transparent"
 							press=".onCancel"
 						/>
-						</HBox>
+				</l:HorizontalLayout>					
 					</l:VerticalLayout>
 				</content>
 			</Page>
