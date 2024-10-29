@@ -116,7 +116,6 @@
         type="Password"
         placeholder="Enter password"
 				tooltip="The password must contain: - from 8 to 14 characters, - at least one capital letter, - one lowercase letter, - one number and - one special character"
-				valueStateText="Password must not be empty."
 				class="required-star"
 				required="true"
         valueLiveUpdate="true"
@@ -130,14 +129,36 @@
 				required="true"
         valueLiveUpdate="true"
    />
+	 <VBox>
+    <HBox alignItems="Center">
+	 <CheckBox id="consentCheckbox"
+	 selected="false" />
+	  <Text text="I agree with"/>
+            <Link
+						class="myLink"
+						href="./pdf/UsersAgreement.pdf"
+						target="_blank"
+						text="the terms of the user agreement"
+						tooltip="Click here to read the user agreement"/> 
+    <Text text="and"/>
+						<Link 
+						class="myLink"
+						href="./pdf/PlatformRules.pdf" 
+						text="platform rule"
+						target="_blank"
+						tooltip="Click here to read the platform rule"/>
+		</HBox>
+    </VBox>
 				<HBox>
 						<Button
-						class="sapUiMediumMarginEnd"
+						  class="sapUiMediumMarginEnd"
 							text="Register"
+							type="Emphasized"
 							press=".onSubmit"
 						/>
 						<Button
 							text="Cancel"
+							type="Transparent"
 							press=".onCancel"
 						/>
 						</HBox>

@@ -111,13 +111,13 @@ sap.ui.define([
 	    },
 
 			onSubmit: function () {
-				var oView = this.getView(),
+				const oView = this.getView(),
 					aInputs = [
 						oView.byId("nameInput"),
 						oView.byId("lastNameInput"),
 						oView.byId("emailInput"),
-					],
-					bValidationError = false;
+					];
+					let bValidationError = false;
 				aInputs.forEach(function (oInput) {
 					bValidationError = this._validateInput(oInput) || bValidationError;
 				}, this);
@@ -127,9 +127,14 @@ sap.ui.define([
 				if (!bIsPhoneNumberValid && !bIsPasswordValid && !bIsConfirmPasswordValid) {
 					bValidationError = true;
 				}
+				const aAllInputs = [oView.byId("nameInput"), oView.byId("lastNameInput"), oView.byId("phoneInput"),
+				oView.byId("emailInput"), oView.byId("passwordInput"), oView.byId("confirmPasswordInput")];
 				if (!bValidationError) {
 					MessageToast.show("The input is validated. Your form has been submitted.");
 				} else {
+				const firstInvalidInput = aAllInputs.find((input) => (input.getValueState() === "Error" ));
+        firstInvalidInput.focus();
+        firstInvalidInput.getDomRef().scrollIntoView({ behavior: 'smooth', block: 'center' });
 					MessageBox.alert("A validation error has occurred. Complete your input first.");
 				}
 		},
