@@ -21,3 +21,9 @@
   flex-wrap: wrap;
   align-items: center;
 }
+
+.myRowBackground {
+  background-color: lightskyblue; 
+  padding: 10px; 
+  color: white;      
+}
