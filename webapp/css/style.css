@@ -27,3 +27,9 @@
   padding: 10px; 
   color: white;      
 }
+
+.myCellBackground {
+  background-color: white; 
+  border-radius: 15px;   
+  margin: 2rem;
+}

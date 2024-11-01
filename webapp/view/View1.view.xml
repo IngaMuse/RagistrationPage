@@ -79,36 +79,31 @@
 							<Button text="Cancel" type="Transparent" press=".onCancel" />
 						</l:HorizontalLayout>
 						<l:BlockLayout id="BlockLayout">
-							  <l:BlockLayoutRow class="myRowBackground">
-								<l:BlockLayoutCell title="About Us">
-								<VBox>
-									<Image src="./src/img/logo.svg" height="40px" width="auto" press=".onLogoPress" densityAware="true" alt="App Logo" />
-									<Text text="SAP - RUN SIMPLE " />
-								</VBox>
+							<l:BlockLayoutRow class="myRowBackground">
+								<l:BlockLayoutCell title="About Us" class="myCellBackground">
+									<VBox>
+										<Image src="./src/img/logo.svg" height="40px" width="auto" press=".onLogoPress" densityAware="true" alt="App Logo" />
+										<Text text="SAP - RUN SIMPLE " />
+									</VBox>
 								</l:BlockLayoutCell>
-								<l:BlockLayoutCell  title=" ">
-								<VBox justifyContent="Center" alignItems="Center">
-								  <Link class="myLink" href="./src/pdf/PrivacyPolicy.pdf" target="_blank" text="Privacy Policy" tooltip="Click here to read the privacy policy" />
-									<Link class="myLink" href="./src/pdf/UsersAgreement.pdf" target="_blank" text="Users Agreement" tooltip="Click here to read the user agreement" />
-									<Link class="myLink" href="./src/pdf/PlatformRules.pdf" text="Platform Rules" target="_blank" tooltip="Click here to read the platform rule" />
-									<Link class="myLink" href="./src/pdf/RefundPolicy.pdf" target="_blank" text="Refund Policy" tooltip="Click here to read the refund policy" />
-								</VBox>
-								</l:BlockLayoutCell>
-								<l:BlockLayoutCell title="Contact Us">
-									<Text text="Adress: Belarus, Minsk, Your Heart" />		
-									<Text text="Phone: +375 29 666-66-66" />		
+								<l:BlockLayoutCell title=" " class="myCellBackground">
 									<VBox justifyContent="Center" alignItems="Center">
-        <!-- <Link href="https://www.instagram.com" target="_blank" tooltip="Instagram">
-            <Image src="./img/instagram.png" width="40px" height="40px" />
-        </Link>
-        <Link href="https://www.telegram.com" target="_blank" tooltip="Telegram">
-            <Image src="./img/telegram.png" width="40px" height="40px" />
-        </Link>
-        <Link href="https://www.youtube.com" target="_blank" tooltip="Youtube">
-            <Image src="./img/youtube.png" width="40px" height="40px" />
-        </Link> -->
-        
-    </VBox>
+										<Link class="myLink" href="./src/pdf/PrivacyPolicy.pdf" target="_blank" text="Privacy Policy" tooltip="Click here to read the privacy policy" />
+										<Link class="myLink" href="./src/pdf/UsersAgreement.pdf" target="_blank" text="Users Agreement" tooltip="Click here to read the user agreement" />
+										<Link class="myLink" href="./src/pdf/PlatformRules.pdf" text="Platform Rules" target="_blank" tooltip="Click here to read the platform rule" />
+										<Link class="myLink" href="./src/pdf/RefundPolicy.pdf" target="_blank" text="Refund Policy" tooltip="Click here to read the refund policy" />
+									</VBox>
+								</l:BlockLayoutCell>
+								<l:BlockLayoutCell title="Contact Us" class="myCellBackground">
+									<VBox>
+										<Text text="Adress: Belarus, Minsk, Your Heart" />
+										<Text text="Phone: +375 29 666-66-66" />
+									</VBox>
+									<HBox class = "hbox-flex">
+										<Button icon="src/img/instagram.png" press="onInstagramPress" type="Transparent" class="sapUiSmallMarginTop sapUiSmallMarginEnd sapUiSmallMarginBegin" />
+										<Button icon="src/img/telegram.png" press="onTelegramPress" type="Transparent" class="sapUiSmallMarginBegin sapUiSmallMarginTop sapUiSmallMarginEnd" />
+										<Button icon="src/img/youtube.png" press="onYouTubePress" type="Transparent" class="sapUiSmallMarginTop sapUiSmallMarginBegin apUiSmallMarginEnd" />
+									</HBox>
 								</l:BlockLayoutCell>
 							</l:BlockLayoutRow>
 						</l:BlockLayout>
