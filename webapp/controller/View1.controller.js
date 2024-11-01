@@ -6,7 +6,9 @@ sap.ui.define(
     "sap/ui/model/ValidateException",
     "sap/m/MessageBox",
     "sap/m/MessageStrip",
-    "sap/ui/core/BusyIndicator",
+		"sap/ui/core/BusyIndicator",
+		"sap/m/MessageToast",
+		"sap/ui/core/Fragment",
   ],
   function (
     Controller,
@@ -15,7 +17,9 @@ sap.ui.define(
     ValidateException,
     MessageBox,
     MessageStrip,
-    BusyIndicator
+		BusyIndicator,
+		MessageToast,
+		Fragment,
   ) {
     "use strict";
 
@@ -347,7 +351,32 @@ sap.ui.define(
             },
           });
         });
-      },
+			},
+
+			_loadPopover: function (oEvent) {
+				if (!this._oPopover) {
+					Fragment.load({
+						id: "myPopover",
+						name: "courseRegistrationPage.view.fragment.LogoPopover",
+						controller: this
+					}).then(function (oPopover) {
+						this._oPopover = oPopover;
+						this.getView().addDependent(this._oPopover);
+						this._oPopover.openBy(oEvent.getSource());
+					}.bind(this));
+				} else {
+					this._oPopover.openBy(oEvent.getSource());
+				}
+			},
+			
+			onLogoPress: function (oEvent) {
+				this._loadPopover(oEvent);
+			},
+
+			onButtonPress: function (oEvent) {
+				MessageToast.show(oEvent.getSource().getText());
+			}
+
     });
   }
 );

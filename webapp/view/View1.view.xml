@@ -9,11 +9,26 @@
 >
 	<App>
 		<pages>
-			<Page title="{i18n>title}">
+			<Page title="Registration Page">
+			<customHeader>
+            <Bar>
+                <contentRight>
+                    <Image
+                        src="./src/img/logo.svg"
+                        height="40px"
+                        width="auto"
+												press=".onLogoPress" />
+                </contentRight>
+                <contentMiddle>
+                    <Text text="Registration Page" />
+                </contentMiddle>
+            </Bar>
+      </customHeader>
+
 				<content>
 					<l:VerticalLayout
 						id="oVerticalContent"
-						class="sapUiContentPadding"
+						class="sapUiResponsiveContentPadding"
 						width="100%"
 					>
 						<Label
@@ -137,7 +152,32 @@
 							valueLiveUpdate="true"
 						/>
 						<VBox>
-							<HBox alignItems="Center">
+						<l:DynamicSideContent>
+						<HBox class = "hbox-flex">
+								<CheckBox
+									id="consentCheckbox"
+									selected="false"
+									select=".onCheckBoxSelect"
+								/>
+								<Text text="I agree with" />
+								<Link
+									class="myLink"
+									href="./src/pdf/UsersAgreement.pdf"
+									target="_blank"
+									text="the terms of the user agreement"
+									tooltip="Click here to read the user agreement"
+								/>
+								<Text text="and" />
+								<Link
+									class="myLink"
+									href="./src/pdf/PlatformRules.pdf"
+									text="platform rule"
+									target="_blank"
+									tooltip="Click here to read the platform rule"
+								/>
+						</HBox>
+						</l:DynamicSideContent>
+							<!-- <HBox alignItems="Center">
 								<CheckBox
 									id="consentCheckbox"
 									selected="false"
@@ -159,7 +199,7 @@
 									target="_blank"
 									tooltip="Click here to read the platform rule"
 								/>
-							</HBox>
+							</HBox> -->
 						</VBox>
 						<Label
 							text="Promocode"
