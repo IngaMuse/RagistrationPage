@@ -1,8 +1,9 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-		<Popover
+	<Popover
         id="myPopover"
         placement="Bottom"
-        showHeader="false">
+        showHeader="false"
+        >
         <VBox>
             <Button icon="sap-icon://home" text="Home" type="Transparent" press=".onButtonPress"/>
             <Button icon="sap-icon://add-employee" text="Registration" type="Transparent" press=".onButtonPress"/>
@@ -10,6 +11,6 @@
             press=".onButtonPress"/>
             <Button icon="sap-icon://incident" text="Support" type="Transparent"
             press=".onButtonPress"/>
-        </VBox>
+        </VBox>    
     </Popover>
 </core:FragmentDefinition>

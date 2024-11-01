@@ -17,14 +17,15 @@
                         src="./src/img/logo.svg"
                         height="40px"
                         width="auto"
-												press=".onLogoPress" />
+												press=".onLogoPress"
+												densityAware="true"
+												alt="App Logo" />
                 </contentRight>
                 <contentMiddle>
                     <Text text="Registration Page" />
                 </contentMiddle>
             </Bar>
       </customHeader>
-
 				<content>
 					<l:VerticalLayout
 						id="oVerticalContent"
@@ -177,29 +178,6 @@
 								/>
 						</HBox>
 						</l:DynamicSideContent>
-							<!-- <HBox alignItems="Center">
-								<CheckBox
-									id="consentCheckbox"
-									selected="false"
-									select=".onCheckBoxSelect"
-								/>
-								<Text text="I agree with" />
-								<Link
-									class="myLink"
-									href="./pdf/UsersAgreement.pdf"
-									target="_blank"
-									text="the terms of the user agreement"
-									tooltip="Click here to read the user agreement"
-								/>
-								<Text text="and" />
-								<Link
-									class="myLink"
-									href="./pdf/PlatformRules.pdf"
-									text="platform rule"
-									target="_blank"
-									tooltip="Click here to read the platform rule"
-								/>
-							</HBox> -->
 						</VBox>
 						<Label
 							text="Promocode"
